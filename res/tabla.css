@@ -1,0 +1,284 @@
+/* General */
+body {
+    font-family: 'Montserrat', sans-serif; /* Consistencia con login.html */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1; /* Similar a login.html */
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background-color: #fff;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    border-radius: 12px; /* Bordes redondeados como en login.html */
+}
+
+/* Tipografía */
+h1, h2, h3 {
+    color: #2a820f; /* Verde como en los botones de login.html */
+    font-weight: 600;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 12px 24px; /* Más espaciado para mejor clicabilidad */
+    background-color: #f1f1f1; /* Fondo claro para mayor contraste */
+    border: 2px solid #ddd; /* Borde que define los botones */
+    color: #333; /* Texto oscuro en botones inactivos */
+    border-radius: 8px;
+    font-size: 16px; /* Texto más grande */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background-color: #2a820f; /* Verde oscuro */
+    color: #fff; /* Texto blanco para contraste */
+    border-color: #24800d; /* Borde que combina */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+.tab-btn:hover {
+    background-color: #d9ead3; /* Verde suave para hover */
+    color: #2a820f;
+    border-color: #b6d7a8;
+}
+
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Calendario */
+#calendar-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+#calendar-header button {
+    padding: 10px 20px; /* Aumentar tamaño del botón */
+    font-size: 18px; /* Texto más grande */
+    background-color: #2a820f; /* Verde oscuro */
+    color: white; /* Contraste de texto */
+    border: none; /* Sin bordes */
+    border-radius: 50%; /* Botón redondeado */
+    cursor: pointer; /* Cambiar a puntero */
+    transition: all 0.3s ease;
+}
+
+#calendar-header button:hover {
+    background-color: #24800d; /* Color más oscuro en hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+
+.calendar-day {
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px; /* Redondeado */
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calendar-day:hover {
+    background-color: #e9f5e9; /* Ligero verde */
+    box-shadow: 0 0 5px rgba(42, 130, 15, 0.3);
+}
+
+.calendar-day.has-event {
+    background-color: #ffd700;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+input:focus, select:focus {
+    border-color: #2a820f;
+    outline: none;
+    box-shadow: 0 0 5px rgba(42, 130, 15, 0.3);
+}
+
+button {
+    background-color: #2a820f;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    padding: 10px 0;
+    border-radius: 6px;
+}
+
+button:hover {
+    background-color: #24800d;
+}
+
+/* Lista de cultivos */
+#cultivos-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cultivos-list li {
+    background-color: #fff;
+    margin-bottom: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+#cultivos-list button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.seleccionar-btn {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.seleccionar-btn:hover {
+    background-color: #45a049;
+}
+
+.eliminar-btn {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.eliminar-btn:hover {
+    background-color: #e63929;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Redondeado */
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Logo */
+.logo {
+    font-size: 33px;
+    color: #2a820f;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.right {
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+}
+
+
+.btn-regresar {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #24800d;
+    transition: background-color 0.3s ease;
+}
+
+.btn-regresar i {
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.btn-regresar:hover {
+    background-color: #1f700b;
+}

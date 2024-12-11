@@ -1,0 +1,28 @@
+/* Contenedor principal */
+.outer-container {
+    display: flex;
+    justify-content: space-between; /* Espacio entre las cajas */
+    align-items: flex-start; /* Alinear las cajas a la parte superior */
+    gap: 20px; /* Espacio entre las cajas */
+    padding: 20px;
+    background-color: transparent; /* Aseguramos que no haya fondo */
+}
+
+/* Estilo para las cajas */
+.box {
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    flex: 1; /* Las cajas ocupan el mismo espacio */
+}
+
+/* Caja central (donde va el contenido del Planificador de Cultivos) */
+.right-box {
+    flex: 2; /* Caja a la derecha es más ancha */
+}
+
+/* De momento, dejaremos las otras dos cajas vacías con estilo para que puedas ver cómo se distribuyen */
+.left-box, .center-box {
+    flex: 1; /* Las cajas vacías ocupan el mismo espacio */
+}
