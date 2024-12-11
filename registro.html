@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="style1.css"> <!-- Enlazamos el archivo CSS -->
+</head>
+<body>
+    <div class="register-container">
+        <h2>Registro de Usuario</h2>
+
+        <!-- Inicio del formulario de registro -->
+        <form id="registerForm">
+
+            <!-- Sección de Información Personal -->
+            <fieldset>
+                <legend>Información Personal</legend>
+
+                <label for="nombres">Nombres:</label>
+                <input type="text" id="nombres" required>
+
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" required>
+
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento" required>
+            </fieldset>
+
+            <!-- Sección de Identificación -->
+            <fieldset>
+                <legend>Identificación</legend>
+
+                <label for="tipoID">Tipo de Identificación:</label>
+                <select id="tipoID" required>
+                    <option value="CC">Cédula de Ciudadanía</option>
+                    <option value="TI">Tarjeta de Identidad</option>
+                    <option value="CE">Cédula de Extranjería</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                </select>
+
+                <label for="cedula">Número de Cédula:</label>
+                <input type="text" id="cedula" required>
+            </fieldset>
+
+            <!-- Sección de Contacto -->
+            <fieldset>
+                <legend>Información de Contacto</legend>
+
+                <label for="celular">Número de Celular:</label>
+                <input type="text" id="celular" required>
+
+                <label for="pais">País:</label>
+                <input type="text" id="pais" required>
+
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" required>
+            </fieldset>
+
+            <!-- Sección de Correo Electrónico -->
+            <fieldset>
+                <legend>Correo Electrónico</legend>
+
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" required>
+
+                <label for="confirmCorreo">Confirmar Correo Electrónico:</label>
+                <input type="email" id="confirmCorreo" required>
+            </fieldset>
+
+            <!-- Sección de Aceptación de Términos -->
+            <div class="terms">
+                <input type="checkbox" id="aceptoTerminos" required>
+                <label for="aceptoTerminos">Acepto los términos para el uso de mis datos</label>
+            </div>
+
+            <!-- Botón de Registro -->
+            <button type="submit">Registrar</button>
+
+        </form>
+        <!-- Mensaje de error -->
+        <p id="error-message" class="error-message"></p>
+    </div>
+
+    <script src="register.js"></script> <!-- Enlazamos el archivo JavaScript -->
+</body>
+</html>

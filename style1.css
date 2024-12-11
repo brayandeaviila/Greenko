@@ -96,3 +96,24 @@
 .register-text a:hover {
     text-decoration: underline;
 }
+/* Estilo para el select */
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #fff;
+    appearance: none;
+}
+
+/* Estilo para el checkbox y la etiqueta */
+.terms {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.terms input {
+    width: auto;
+}
