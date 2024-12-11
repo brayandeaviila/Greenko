@@ -1,11 +1,18 @@
 // Variables globales
 let currentDate = new Date();
 let events = JSON.parse(localStorage.getItem('events')) || {};
-let cultivos = JSON.parse(localStorage.getItem('cultivos')) || ['Maíz', 'Trigo', 'Soja', 'Girasol'];
+let loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')); // Obtener el usuario logueado
+let cultivos = JSON.parse(localStorage.getItem('cultivos')) || [];
+let userEvents = JSON.parse(localStorage.getItem('events'))[loggedInUser ? loggedInUser.idNumber : null] || {}; // Obtener los eventos del usuario logueado
 
-// Funciones de utilidad
+// Funciones de utilidad para guardar eventos de un usuario específico
 function saveToLocalStorage() {
-    localStorage.setItem('events', JSON.stringify(events));
+    let allEvents = JSON.parse(localStorage.getItem('events')) || {};
+    allEvents[loggedInUser.idNumber] = userEvents;
+    localStorage.setItem('events', JSON.stringify(allEvents));
+}
+
+function saveCultivosToLocalStorage() {
     localStorage.setItem('cultivos', JSON.stringify(cultivos));
 }
 
@@ -42,7 +49,7 @@ function renderCalendar() {
         day.textContent = i;
 
         const dateString = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${i.toString().padStart(2, '0')}`;
-        if (events[dateString]) {
+        if (userEvents[dateString]) {
             day.classList.add('has-event');
         }
 
@@ -54,9 +61,9 @@ function renderCalendar() {
 
 function showEventDetails(date) {
     const eventDetails = document.getElementById('event-details');
-    if (events[date]) {
+    if (userEvents[date]) {
         let detailsHTML = `<h3>Eventos para ${date}</h3>`;
-        events[date].forEach(event => {
+        userEvents[date].forEach(event => {
             detailsHTML += `
                 <div class="event-item">
                     <img src="${event.imagen || '/placeholder.svg?height=50&width=50'}" alt="${event.cultivo}" class="event-image">
@@ -68,7 +75,6 @@ function showEventDetails(date) {
         });
         eventDetails.innerHTML = detailsHTML;
 
-        // Show modal with event details
         showModal(`Eventos para ${date}`, detailsHTML);
     } else {
         eventDetails.innerHTML = `<p>No hay eventos para ${date}</p>`;
@@ -85,28 +91,49 @@ document.getElementById('next-month').addEventListener('click', () => {
     renderCalendar();
 });
 
-// Gestión de cultivos
+// Función para cerrar el modal cuando se hace clic en la "X"
+document.querySelector('.close').onclick = function () {
+    document.getElementById('eventModal').style.display = 'none';
+}
+
+// Función para cerrar el modal cuando se hace clic fuera del contenido del modal
+window.onclick = function (event) {
+    const modal = document.getElementById('eventModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Función para renderizar los cultivos en el combobox y lista
+document.addEventListener('DOMContentLoaded', function() {
+
+    renderCultivos();
+});
+
+// Función para renderizar los cultivos
 function renderCultivos() {
     const cultivosList = document.getElementById('cultivos-list');
     const cultivoSelect = document.getElementById('cultivo-select');
 
-    cultivosList.innerHTML = '';
-    cultivoSelect.innerHTML = '<option value="">Seleccione un cultivo</option>';
+    if (cultivosList && cultivoSelect) {
+        cultivosList.innerHTML = ''; // Limpiar la lista de cultivos
+        cultivoSelect.innerHTML = '<option value="">Seleccione un cultivo</option>'; // Limpiar y agregar opción por defecto
 
-    cultivos.forEach((cultivo, index) => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            ${cultivo}
-            <button class="seleccionar-btn" data-index="${index}">Seleccionar</button>
-            <button class="eliminar-btn" data-index="${index}">Eliminar</button>
-        `;
-        cultivosList.appendChild(li);
+        cultivos.forEach((cultivo, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                ${cultivo}
+                <button class="seleccionar-btn" data-index="${index}">Seleccionar</button>
+                <button class="eliminar-btn" data-index="${index}">Eliminar</button>
+            `;
+            cultivosList.appendChild(li);
 
-        const option = document.createElement('option');
-        option.value = cultivo;
-        option.textContent = cultivo;
-        cultivoSelect.appendChild(option);
-    });
+            const option = document.createElement('option');
+            option.value = cultivo;
+            option.textContent = cultivo;
+            cultivoSelect.appendChild(option);
+        });
+    }
 }
 
 document.getElementById('nuevo-cultivo-form').addEventListener('submit', (e) => {
@@ -115,7 +142,7 @@ document.getElementById('nuevo-cultivo-form').addEventListener('submit', (e) => 
     if (nuevoCultivo && !cultivos.includes(nuevoCultivo)) {
         cultivos.push(nuevoCultivo);
         renderCultivos();
-        saveToLocalStorage();
+        saveCultivosToLocalStorage();
     }
     document.getElementById('nuevo-cultivo-nombre').value = '';
 });
@@ -134,10 +161,10 @@ document.getElementById('planificar-siembra-form').addEventListener('submit', as
             imagen = await readFileAsDataURL(imagenInput.files[0]);
         }
 
-        if (!events[fecha]) {
-            events[fecha] = [];
+        if (!userEvents[fecha]) {
+            userEvents[fecha] = [];
         }
-        events[fecha].push({ cultivo, area, imagen });
+        userEvents[fecha].push({ cultivo, area, imagen });
         saveToLocalStorage();
         renderCalendar();
 
@@ -178,7 +205,7 @@ document.getElementById('cultivos-list').addEventListener('click', (e) => {
         const index = e.target.dataset.index;
         cultivos.splice(index, 1);
         renderCultivos();
-        saveToLocalStorage();
+        saveCultivosToLocalStorage();
     }
 });
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,12 +13,14 @@
         <a href="#" class="logo">Greenko.</a>
         <div class="links">
             <a href="#">Inicio</a>
-            <a href="#">Sobre Nosotros</a>
+            <a href="admin.html">Sobre Nosotros</a>
             <a href="#">Productos</a>
             <a href="#">Contacto</a>
         </div>
         <div class="login">
-            <form action="login.html"> <button type="submit" class="signup">Ingresar</button> </form>
+            <form> 
+                <button id="login-button" type="submit" class="signup">Ingresar</button> 
+            </form>
         </div>
     </nav>
 
@@ -26,7 +28,7 @@
         <div class="left">
             <h1>El mejor gestionador de <span>cultivos</span> del mercado.</h1>
             <p class="separator"></p>
-            <a href="login.html">
+            <a id="platform-enter-button" href="#">
                 <i class="bx bxs-calendar-star"></i>
                 <span>Entrar a la plataforma</span>
             </a>
@@ -139,6 +141,25 @@
         </div>
     </div>
 
+    <script>
+        // Verificar si el usuario ya está logueado
+        const loggedInUser = localStorage.getItem('loggedInUser');
+
+        // Obtener el enlace del botón de "Entrar a la plataforma"
+        const platformEnterButton = document.getElementById('platform-enter-button');
+        
+        // Obtener el botón "Ingresar"
+        const loginButton = document.getElementById('login-button');
+
+        // Si el usuario está logueado, redirigir al dashboard, si no, al login
+        if (loggedInUser) {
+            platformEnterButton.href = 'dashboard.html'; // Redirige al dashboard
+            loginButton.href = 'dashboard.html'; // Cambia el botón "Ingresar" a "Entrar a la plataforma"
+        } else {
+            platformEnterButton.href = 'login.html'; // Redirige al login
+            loginButton.href = 'login.html'; // Mantiene el botón "Ingresar"
+        }
+    </script>
 
 </body>
 </html>

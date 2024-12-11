@@ -12,10 +12,9 @@
 
     <header>
         <a href="index.html" class="logo">Greenko</a>
-        <h3 id="welcome-message">Bienvenido, usuario</h3>
+        <h3 id="welcome-message">Bienvenido, usuario</h3> <!-- Aquí se actualizará el nombre del usuario -->
         <div class="right">
-           
-            <a href="#" class="btn-regresar" id="logout-button">
+            <a href="index.html" class="btn-regresar">
                 <i class='bx bx-log-out'></i>
                 <span>Cerrar sesión</span>
             </a>
@@ -24,12 +23,7 @@
 
     <div class="outer-container">
         <div class="box left-box"></div> <!-- Caja izquierda vacía -->
-        <div class="box center-box">
-            <h3>Mis Cultivos</h3>
-            <ul id="user-cultivos-list">
-            
-            </ul>
-        </div>
+        <div class="box center-box"></div> <!-- Caja del medio vacía -->
         <div class="box right-box">
             <div class="container">
                 <h1>Planificador de Cultivos Interactivo</h1>
@@ -54,7 +48,7 @@
                     <!-- Tabla de gestión de cultivos -->
                     <div id="cultivos" class="tab-pane">
                         <h3>Gestión de Cultivos</h3>
-                        <table id="cultivos-list">
+                        <table id="cultivos-table">
                             <thead>
                                 <tr>
                                     <th>Nombre del Cultivo</th>
@@ -97,33 +91,20 @@
         </div>
     </div>
 
-    
+    <script src="res/tabla.js"></script>
 
     <script>
         // Recuperamos el usuario desde el localStorage
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
-        const loggedInUser2 = JSON.parse(localStorage.getItem('loggedInUser'));
-
-        if (loggedInUser2) {
+        if (loggedInUser) {
             // Si hay un usuario en el localStorage, mostramos su nombre en el header
-            document.getElementById('welcome-message').textContent = `Bienvenido, ${loggedInUser2.name}`;
+            document.getElementById('welcome-message').textContent = `Bienvenido, ${loggedInUser.name}`;
         } else {
             // Si no hay usuario en el localStorage (no ha iniciado sesión), redirigimos al login
             alert('No has iniciado sesión. Redirigiendo al inicio...');
             window.location.href = 'login.html'; // Redirigir al login
         }
-
-        // Función para cerrar sesión
-        document.getElementById('logout-button').addEventListener('click', function() {
-            localStorage.removeItem('loggedInUser'); // Eliminar el usuario del localStorage
-            alert('Has cerrado sesión correctamente.');
-            window.location.href = 'index.html'; // Redirigir al inicio
-        });
     </script>
-    
-
-    <script src="res/tabla.js"></script>
-    <script src="js/cultivos.js"></script>
-
 </body>
 </html>
