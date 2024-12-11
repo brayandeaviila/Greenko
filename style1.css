@@ -7,16 +7,16 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+
+
 /* Estilos del Login */
 .login-container {
+    background-image: url('res/background.jpg');
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url('cultivo fondo.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #f1f1f1;
 }
 
 .login-box {
@@ -42,6 +42,14 @@
 .input-group {
     margin-bottom: 20px;
     text-align: left;
+}
+
+.input-group2 {
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
 .input-group label {
@@ -95,4 +103,67 @@
 
 .register-text a:hover {
     text-decoration: underline;
+}
+
+
+
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.input-group select:focus {
+    border-color: #2a820f;
+    outline: none;
+    box-shadow: 0 0 5px rgba(42, 130, 15, 0.3);
+}
+
+
+
+.logo{
+    font-size: 33px;
+    color: #2a820f;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.right {
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+}
+
+
+.btn-regresar {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #24800d;
+    transition: background-color 0.3s ease;
+}
+
+.btn-regresar i {
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.btn-regresar:hover {
+    background-color: #1f700b;
 }

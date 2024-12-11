@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificador de Cultivos Interactivo</title>
+    <link rel="stylesheet" href="res/tabla.css"">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="res/styledashboard.css">
+    
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Greenko</a>
+        <h3>Bienvenido, usuario</h3>
+        <div class="right">
+            <a href="index.html" class="btn-regresar">
+                <i class='bx bx-log-out'></i>
+                <span>Cerrar sesion</span>
+            </a>
+        </div>
+
+    </header>
+    
+
+    <div class="outer-container">
+        <div class="box left-box"></div> <!-- Caja izquierda vacía -->
+        
+        <div class="box center-box"></div> <!-- Caja del medio vacía -->
+    
+        <div class="box right-box">
+            <div class="container">
+                <h1>Planificador de Cultivos Interactivo</h1>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="calendario">Calendario</button>
+                    <button class="tab-btn" data-tab="cultivos">Gestión de Cultivos</button>
+                    <button class="tab-btn" data-tab="planificar">Planificar Siembra</button>
+                </div>
+                <div class="tab-content">
+                    <div id="calendario" class="tab-pane active">
+                        <div id="calendar-container">
+                            <div id="calendar-header">
+                                <button id="prev-month">&lt;</button>
+                                <h2 id="calendar-month-year"></h2>
+                                <button id="next-month">&gt;</button>
+                            </div>
+                            <div id="calendar-body"></div>
+                        </div>
+                        <div id="event-details"></div>
+                    </div>
+                    <div id="cultivos" class="tab-pane">
+                        <h3>Gestión de Cultivos</h3>
+                        <ul id="cultivos-list"></ul>
+                        <form id="nuevo-cultivo-form">
+                            <input type="text" id="nuevo-cultivo-nombre" placeholder="Nombre del cultivo" required>
+                            <button type="submit">Agregar Cultivo</button>
+                        </form>
+                    </div>
+                    <div id="planificar" class="tab-pane">
+                        <h3>Planificar Siembra</h3>
+                        <form id="planificar-siembra-form">
+                            <select id="cultivo-select" required>
+                                <option value="">Seleccione un cultivo</option>
+                            </select>
+                            <input type="number" id="area-siembra" placeholder="Área a sembrar (m²)" required>
+                            <input type="date" id="fecha-siembra" required>
+                            <input type="file" id="imagen-cultivo" accept="image/*">
+                            <button type="submit">Planificar Siembra</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    <!-- Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+    <script src="res/tabla.js"></script>
+</body>
+</html>
