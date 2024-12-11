@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+img{
+    object-fit: cover;
+}
+
+body{
+    background-color: #f1f1f1;
+}
+
+nav{
+    padding: 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+nav a:hover{
+    color: #2a820f;
+}
+
+nav a.logo{
+    font-size: 33px;
+    color: #2a820f;
+    font-weight: 600;
+}
+
+nav .links a:not(:last-child){
+    margin-right: 20px;
+}
+
+nav .login button{
+    padding: 8px 14px;
+    border: none;
+    margin-right: 14px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+nav .login button:hover{
+    color: #2a820f;
+}
+
+nav .login button.signup{
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
+}
+
+nav .login button.signup:hover{
+    background-color: #202020;
+}
+
+header{
+    padding: 80px;
+    height: calc(100vh - 380px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .left{
+    width: 700px;
+}
+
+header .left h1{
+    font-size: 60px;
+}
+
+header .left h1 span{
+    color: #2a820f;
+}
+
+header .left p{
+    margin: 40px 0;
+    color: #777;
+}
+
+header .left a{
+    display: flex;
+    align-items: center;
+    background: #000;
+    width: 200px;
+    padding: 8px;
+    border-radius: 60px;
+}
+
+header .left a:hover{
+    background: #070707;
+}
+
+header .left a i{
+    background-color: #fff;
+    font-size: 24px;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+header .left a span{
+    color: #fff;
+    margin-left: 10px;
+}
+
+header img{
+    width: 600px;
+}
+
+h2.separator{
+    padding: 0 80px;
+    font-size: 40px;
+    margin-top: 40px;
+}
+
+.boxes{
+    padding: 0 80px;
+    margin: 50px 0 80px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.boxes .item,
+.shop .list .item{
+    padding: 20px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.boxes .item:hover
+.shop .list .item:hover
+.sellers .item:hover{
+    box-shadow: none;
+}
+
+.boxes .item .header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.boxes .item .header i{
+    font-size: 40px;
+}
+
+.boxes .item .header h5{
+    font-size: 17px;
+}
+
+.boxes .item p{
+    margin-top: 10px;
+    padding: 0 4px;
+}
+
+.shop{
+    padding: 0 80px;
+    margin-top: 30px;
+}
+
+.shop .category{
+    display: flex;
+    gap: 14px;
+}
+
+.category a{
+    background-color: #dfdcdc;
+    padding: 8px 14px;
+    font-size: 15px;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+.shop .category a:hover{
+    color: #fff;
+    background-color: #0f2182;
+}
+
+.shop .list{
+    padding: 80px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.shop .list .item img{
+    width: 280px;
+    height: 280px;
+    border-radius: 18px;
+}
+
+.shop .list .item .info{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #edecec;
+}
+
+.shop .list .item .info h5{
+    font-size: 18px;
+}
+
+.shop .list .item .info .btc{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.shop .list .item .btc i{
+    font-size: 20px;
+    font-weight: bold;
+    color: #304ffe;
+}
+
+.shop .list .item .btc p{
+    font-size: 20px;
+    font-weight: 500;
+    color: #304ffe;
+}
+
+.shop .list .item .info > p{
+    font-size: 15px;
+    color: #666666;
+}
+
+.shop .list .item .bid{
+    padding: 14px 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shop .list .item .bid p,
+.shop .list .item .bid a{
+    background-color: #edecec;
+    padding: 8px 10px;
+    font-size: 13px;
+    border-radius: 10px;
+}
+
+.shop .list .item .bid a{
+    font-size: 20px;
+    color: #304ffe;
+    background: transparent;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.shop .list .item .bid a:hover{
+    color: #fff;
+    background-color: #000;
+}
